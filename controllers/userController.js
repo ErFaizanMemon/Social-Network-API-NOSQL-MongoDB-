@@ -73,22 +73,48 @@ const userController = {
       res.status(500).json(err);
     }
   },
+  // async addFriend(req, res) {
+  //   try {
+  //     const userData = await User.findOneAndUpdate(
+  //       { _id: req.params.userId },
+  //       { $addToSet: { friends: req.params.friendId } },
+  //       { new: true }
+  //     );
+  //     if (!userData) {
+  //       return res.status(404).json({ message: "friend not added" });
+  //     }
+  //     res.json(userData);
+  //   } catch (err) {
+  //     console.log(err);
+  //     res.status(500).json(err);
+  //   }
+  // },
   async addFriend(req, res) {
     try {
+      // Assuming you send the friendId in the request body
+      const { friendId } = req.body;
+      
+      if (!friendId) {
+        return res.status(400).json({ message: "FriendId is required in the request body." });
+      }
+  
       const userData = await User.findOneAndUpdate(
         { _id: req.params.userId },
-        { $addToSet: { friends: req.params.friendId } },
+        { $addToSet: { friends: friendId } }, // Use friendId from the request body
         { new: true }
       );
+  
       if (!userData) {
-        return res.status(404).json({ message: "friend not added" });
+        return res.status(404).json({ message: "Friend not added" });
       }
+  
       res.json(userData);
     } catch (err) {
-      console.log(err);
+      console.error(err);
       res.status(500).json(err);
     }
   },
+  
   async removeFriend(req, res) {
     try {
       const userData = await User.findOneAndUpdate(

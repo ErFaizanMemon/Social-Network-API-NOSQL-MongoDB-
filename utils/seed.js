@@ -31,5 +31,5 @@ connection.once('open', async () => {
 
   console.table(users);
   console.timeEnd('seeding complete 🌱');
-  process.exit(0);
+  //process.exit(0);
 });

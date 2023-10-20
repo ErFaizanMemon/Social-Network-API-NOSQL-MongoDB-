@@ -16,29 +16,32 @@
 
 // module.exports = connection;
 
-const { connect, connection } = require('mongoose');
+// const { connect, connection } = require('mongoose');
 
-// After you create your Heroku application, visit https://dashboard.heroku.com/apps/
-// Select the application name and add your Atlas connection string as a Config Var
-// Node will look for this environment variable and if it exists, it will use it.
-// Otherwise, it will assume that you are running this application locally
+// // After you create your Heroku application, visit https://dashboard.heroku.com/apps/
+// // Select the application name and add your Atlas connection string as a Config Var
+// // Node will look for this environment variable and if it exists, it will use it.
+// // Otherwise, it will assume that you are running this application locally
 
-const connectionString = process.env.MONGODB_URI || 'mongodb://127.0.0.1:27017/mighty-lowlands-82912';
+// const connectionString = process.env.MONGODB_URI || 'mongodb://127.0.0.1:27017/mighty-lowlands-82912';
 
-// Connect to the MongoDB database
-connect(connectionString, {
-  // useNewUrlParser: true,
-  // useUnifiedTopology: true,
-  // useFindAndModify: false,
-});
+// // Connect to the MongoDB database
+// connect(connectionString, {
+//   // useNewUrlParser: true,
+//   // useUnifiedTopology: true,
+//   // useFindAndModify: false,
+// });
 
-// Create a reference to the MongoDB connection
-const db = connection;
+// // Create a reference to the MongoDB connection
+// const db = connection;
 
-// Event listeners for MongoDB connection
-db.on('error', console.error.bind(console, 'MongoDB connection error:'));
-db.once('open', () => {
-  console.log('Connected to the MongoDB database.');
-});
+// // Event listeners for MongoDB connection
+// db.on('error', console.error.bind(console, 'MongoDB connection error:'));
+// db.once('open', () => {
+//   console.log('Connected to the MongoDB database.');
+// });
 
-module.exports = db;
+// module.exports = db;
+const mongoose = require('mongoose');
+mongoose.connect(process.env.MONGODB_URI || 'mongodb://127.0.0.1:27017/mighty-lowlands-82912');
+module.exports = mongoose.connection;

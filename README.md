@@ -28,3 +28,9 @@ Run the server.js file
 To use the API and test its functionality, you can use tools like Insomnia.
 
 ## Deployment
+
+Github Repo LInk - https://github.com/ErFaizanMemon/Social-Network-API-NOSQL-MongoDB-
+
+Git deployment LInk - https://erfaizanmemon.github.io/Social-Network-API-NOSQL-MongoDB-/
+
+Walktrough Video Link - https://github.com/ErFaizanMemon/Social-Network-API-NOSQL-MongoDB-/blob/master/Walkthrough.mkv
